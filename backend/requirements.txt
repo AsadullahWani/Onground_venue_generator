@@ -1,0 +1,8 @@
+requests
+bs4
+lxml
+agno
+pandas
+googlesearch-python
+groq
+fastapi
