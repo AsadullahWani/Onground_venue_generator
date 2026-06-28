@@ -631,7 +631,7 @@ def main() -> None:
         
     
     print(f"\nRunning AI sport categorization on {len(venues)} venues...")
-    venues = categorize_venues(venues, groq_api_key='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')
+    venues = categorize_venues(venues, groq_api_key='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')
 
     if args.ai_filter_sports:
         before = len(venues)
@@ -651,7 +651,7 @@ def main() -> None:
     print(f"\nGenerating AI summaries for {len(venues)} venues...")
     add_ai_summaries(
         venues,
-        groq_api_key='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',
+        groq_api_key='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',
         model_id='groq/compound',
         delay=max(35.0, args.ai_delay),
     )
@@ -725,7 +725,7 @@ def fetch_venues(
     # if include_ai_summary and groq_api_key:
         add_ai_summaries(
             venues,
-            groq_api_key='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',
+            groq_api_key='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',
             model_id="groq/compound",
             delay=0.5,
         )

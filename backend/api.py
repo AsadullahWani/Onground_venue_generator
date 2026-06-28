@@ -291,7 +291,7 @@ def search_venues_post(body: VenueSearchRequest):
 
     if body.ai_categorize:
         from ai_categorizer import categorize_venues, filter_by_ai_sport
-        akey = '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'
+        akey = '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'
         if not akey:
             raise HTTPException(
                 status_code=422,
@@ -312,7 +312,7 @@ def search_venues_post(body: VenueSearchRequest):
                   f"(sports={body.ai_filter_sports}, min_confidence={body.ai_min_confidence})")
 
     if body.include_ai_summary:
-        groq_key ='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'
+        groq_key ='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'
         if not groq_key:
             raise HTTPException(
                 status_code=422,
