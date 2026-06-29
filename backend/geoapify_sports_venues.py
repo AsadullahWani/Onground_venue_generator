@@ -86,7 +86,7 @@ DEFAULT_SPORTS = list(SPORT_CATEGORY_MAP.keys())
 # Max results Geoapify returns per page
 GEOAPIFY_PAGE_SIZE = 20   # API default; max is 500 but free tier works well at 20
 
-
+groq_key = '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'
 # ---------------------------------------------------------------------------
 # Dataclass — mirrors your original Venue structure, adapted for Geoapify
 # ---------------------------------------------------------------------------
@@ -631,7 +631,7 @@ def main() -> None:
         
     
     print(f"\nRunning AI sport categorization on {len(venues)} venues...")
-    venues = categorize_venues(venues, groq_api_key='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')
+    venues = categorize_venues(venues, groq_api_key=groq_key)
 
     if args.ai_filter_sports:
         before = len(venues)
@@ -651,7 +651,7 @@ def main() -> None:
     print(f"\nGenerating AI summaries for {len(venues)} venues...")
     add_ai_summaries(
         venues,
-        groq_api_key='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',
+        groq_api_key=groq_key,
         model_id='groq/compound',
         delay=max(35.0, args.ai_delay),
     )
@@ -725,7 +725,7 @@ def fetch_venues(
     # if include_ai_summary and groq_api_key:
         add_ai_summaries(
             venues,
-            groq_api_key='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',
+            groq_api_key=groq_key,
             model_id="groq/compound",
             delay=0.5,
         )

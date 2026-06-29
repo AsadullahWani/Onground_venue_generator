@@ -113,6 +113,7 @@ class SportListResponse(BaseModel):
 # ---------------------------------------------------------------------------
 # Request body model for POST /venues/search
 # ---------------------------------------------------------------------------
+groq_key = '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'
 
 class VenueSearchRequest(BaseModel):
     city: str = Field(..., description="City name, e.g. 'Kolkata' or 'New Delhi'.")
@@ -291,7 +292,7 @@ def search_venues_post(body: VenueSearchRequest):
 
     if body.ai_categorize:
         from ai_categorizer import categorize_venues, filter_by_ai_sport
-        akey = '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'
+        akey = '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'
         if not akey:
             raise HTTPException(
                 status_code=422,
@@ -312,7 +313,7 @@ def search_venues_post(body: VenueSearchRequest):
                   f"(sports={body.ai_filter_sports}, min_confidence={body.ai_min_confidence})")
 
     if body.include_ai_summary:
-        groq_key ='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'
+        groq_key ='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'
         if not groq_key:
             raise HTTPException(
                 status_code=422,
@@ -365,7 +366,7 @@ def venues_by_sport(
     from ai_categorizer import categorize_venues, filter_by_ai_sport
 
     api_key = get_api_key()
-    akey = os.environ.get("GROQ_API_KEY", "")
+    akey = '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'
     if not akey:
         raise HTTPException(
             status_code=503,
