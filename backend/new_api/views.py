@@ -29,7 +29,7 @@ from .serializers import (
 # ---------------------------------------------------------------------------
 
 def get_api_key():
-    key = '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'
+    key = 'b696bab63e9f4b5dbd370218b72d7298'
     if not key:
         return None, Response(
             {"detail": "GEOAPIFY_API_KEY is not set."},
@@ -39,7 +39,7 @@ def get_api_key():
 
 
 def get_groq_key():
-    key = settings.GROQ_API_KEY
+    key = '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'
     if not key:
         return None, Response(
             {"detail": "GROQ_API_KEY is not set."},

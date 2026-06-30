@@ -61,7 +61,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'backend.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://onground-venue-generator-frontend.vercel.app'
+    'https://onground-venue-generator-frontend.vercel.app',
+    
 ]
 
 CORS_ALLOW_CREDENTIALS = True
