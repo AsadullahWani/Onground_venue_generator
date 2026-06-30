@@ -42,17 +42,36 @@ from geoapify_sports_venues import (
 # App setup
 # ---------------------------------------------------------------------------
 
-app = FastAPI(
-    title="Sports Venue API",
-    description="Search sports venues via Geoapify Places API, with optional AI summaries.",
-    version="1.0.0",
-)
+# app = FastAPI(
+#     title="Sports Venue API",
+#     description="Search sports venues via Geoapify Places API, with optional AI summaries.",
+#     version="1.0.0",
+# )
+
+
+app = FastAPI()
+
+# Define allowed origins based on environment
+ALLOWED_ORIGINS = [
+    "https://onground-venue-generator-frontend.vercel.app",
+    "https://yourdomain.com",        # add your custom domain if any
+]
+
+# Allow localhost only in development
+# if os.getenv("ENVIRONMENT") == "development":
+#     ALLOWED_ORIGINS.extend([
+#         "http://localhost:3000",
+#         "http://localhost:5173",
+#         "http://127.0.0.1:3000",
+#     ])
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # tighten this in production
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=ALLOWED_ORIGINS,        # explicit origins only
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],  # only what you need
+    allow_headers=["Authorization", "Content-Type", "Accept"],  # only what you need
+    max_age=3600,                         # cache preflight for 1 hour
 )
 
 # ---------------------------------------------------------------------------
