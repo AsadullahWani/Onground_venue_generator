@@ -444,9 +444,9 @@ def add_ai_summaries(
     agent = Agent(
         model=Groq(id=model_id, api_key=groq_api_key),
         instructions=[
-            "You summarize sports venues for a dataset.",
+            "You summarize sports venues for a dataset according to the sport.",
             "Use only the venue data provided. Do not invent attributes.",
-            "Write one concise paragraph, 35 to 50 words.",
+            "Write one concise paragraph, 35 to 50 words without any mismatches on sport.",
             "Return JSON only. No markdown.",
             '{"summary": "Short venue summary"}',
         ],
