@@ -69,7 +69,7 @@ class VenueSearchRequestSerializer(serializers.Serializer):
     max_results = serializers.IntegerField(default=50, min_value=1, max_value=500)
     page_size   = serializers.IntegerField(default=20, min_value=1, max_value=500)
     include_ai_summary = serializers.BooleanField(default=True)
-    ai_categorize      = serializers.BooleanField(default=True)
+    ai_categorize      = serializers.BooleanField(default=False)
     ai_filter_sports   = serializers.ListField(child=serializers.CharField(), default=list)
     ai_min_confidence  = serializers.ChoiceField(
         choices=["high", "medium", "low"], default="low"

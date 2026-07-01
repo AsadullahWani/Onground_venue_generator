@@ -448,6 +448,16 @@ def add_ai_summaries(
             "Use only the venue data provided. Do not invent attributes.",
             "Write one concise paragraph, 35 to 50 words without any mismatches on sport.",
             "Return JSON only. No markdown.",
+           """ The classified sport is authoritative.
+
+            Name: {venues.name}
+            Address: {venues.formatted_address}
+            Sport: {venues.ai_sport_type}
+
+            Rules:
+            - Do not change the sport.
+            - Do not guess missing information.
+            - Return JSON only."""
             '{"summary": "Short venue summary"}',
         ],
         markdown=False,
@@ -456,6 +466,7 @@ def add_ai_summaries(
     for index, venue in enumerate(venues, start=1):
         print(f"Generating AI summary {index}/{len(venues)}: {venue.name}")
         try:
+            
             response = agent.run(venue_summary_prompt(venue))
             text = _agent_text(response)
             clean_text = text.replace("```json", "").replace("```", "").strip()
